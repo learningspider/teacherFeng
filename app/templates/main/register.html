@@ -1,0 +1,100 @@
+{% extends "mybase.html" %}
+{% block content %}
+<div id="content-container" class="container">
+    <div class="es-section login-section">
+        <div class="logon-tab clearfix">
+            <a href="/login">登录帐号</a>
+            <a class="active">注册帐号</a>
+        </div>
+        <div class="login-main">
+            <form id="register-form" method="post" action="">
+                <div class="form-group mbl">
+            <label class="control-label required" for="register_emailOrmobile">手机/邮箱</label>
+            <div class="controls">
+              <input type="text" id="register_emailOrMobile" name="emailOrMobile" required="required" class="form-control input-lg" data-url="/register/email_or_mobile/check" placeholder="填写你常用的邮箱或手机号码作为登录帐号">
+              <p class="help-block"></p>
+            </div>
+          </div>
+
+        <div class="form-group mbl">
+          <label class="control-label required" for="register_nickname">用户名</label>
+          <div class="controls">
+            <input type="text" id="register_nickname" name="nickname" required="required" class="form-control input-lg" data-url="/register/nickname/check" placeholder="中、英文均可，最长18个英文或9个汉字">
+            <p class="help-block"></p>
+          </div>
+        </div>
+        <div class="form-group mbl">
+          <label class="control-label required" for="register_password">密码</label>
+          <div class="controls">
+            <input type="password" id="register_password" name="password" required="required" class="form-control input-lg" placeholder="5-20位英文、数字、符号，区分大小写">
+            <p class="help-block"></p>
+          </div>
+        </div>
+                  <div class="form-group mbl js-captcha">
+            <label class="control-label required" for="captcha_code">验证码</label>
+            <div class="controls row">
+              <div class = "col-xs-7">
+                <input type="text" class="form-control input-lg" id="captcha_code" name="captcha_code" maxlength="5" placeholder="验证码" required="required"  data-url="/register/captcha/check" >
+                <p class="help-block"></p>
+              </div>
+              <div class="col-xs-5">
+                <img src="/captcha_num" data-url="/captcha_num" id="getcode_num" title="看不清，点击换一张" style="cursor:pointer;height:40px;width:100%">
+              </div>
+
+            </div>
+          </div>
+                          <div class="form-group mbl hidden email_mobile_msg">
+            <label class="control-label required" for="sms_code">短信验证码</label>
+            <div class="controls row" >
+              <div class = "col-xs-7" >
+                <input type="number" class="form-control input-lg" id="sms_code" name="sms_code" placeholder="填写你的短信验证码" required="required" data-url="/edu_cloud/sms_check/sms_registration">
+                <p class="help-block"> </p>
+              </div>
+              <div class="col-xs-5">
+                <a href="#modal" data-toggle="modal" class="btn btn-default btn-lg js-sms-send disabled" data-url="/register/captcha/modal" data-sms-url="/edu_cloud/sms_send">
+                  <span id="js-time-left"></span>
+                  <span id="js-fetch-btn-text">获取短信验证码</span>
+               </a>
+              </div>
+            </div>
+          </div>
+
+                  <div class="form-group mbl">
+            <div class="controls">
+              <label>
+                <input type="checkbox" id="user_terms" checked="checked"> 我已阅读并同意<a href="/userterms" target="_blank">《服务协议》</a>
+              </label>
+            </div>
+          </div>
+
+        <div class="form-group mbl">
+          <div class="controls">
+            <button type="submit" id="register-btn" data-submiting-text="正在提交" class="btn btn-primary btn-lg btn-block">注册</button>
+          </div>
+        </div>
+
+        <input type="hidden" name="captcha_enabled" value="1" />
+        <input type="hidden" name="_csrf_token" value="WvCddycBrT7fzUKDqJB-27B4Yidz6_3eFKsByXsbOHE">
+
+      </form>
+
+              <div class="social-login">
+          <span>
+
+      <a href="/login/bind/weibo?_target_path=/&amp;inviteCode=" class="social-icon social-weibo">
+      <i class="es-icon es-icon-weibo"></i>
+    </a>
+
+      <a href="/login/bind/qq?_target_path=/&amp;inviteCode=" class="social-icon social-qq">
+      <i class="es-icon es-icon-qq"></i>
+    </a>
+
+
+
+          </span>
+          <div class="line"></div>
+        </div>
+            </div>
+</div>
+        </div>
+{% endblock %}

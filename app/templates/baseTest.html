@@ -1,0 +1,18 @@
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+{% block page_content %}
+
+<ul class="nav navbar-nav navbar-right">
+    {% if current_user.is_authenticated() %}
+    <li><a href="{{ url_for('main.logout') }}">Sign out</a></li>
+    {% else %}
+    <li><a href="{{ url_for('main.login') }}">Sign in</a></li>
+    {% endif %}
+</ul>
+
+{% endblock %}
+</body>
+</html>

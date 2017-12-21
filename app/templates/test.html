@@ -1,0 +1,40 @@
+{% extends "mybase.html" %}
+{% block content %}
+
+    <!-- 广告 -->
+    <section class="es-poster swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide swiper-hidden" style="background: #109afb;">
+                <div class="container">
+                    <a href="" target="_blank" ><img class="img-responsive" src="{{ url_for('static',filename='img/1426295317cf636880.png') }}"></a>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pager"></div>
+    </section>
+
+    <!-- 特性 -->
+    <section class="introduction-section hidden-xs">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-4 introduction-item">
+                    <img class="img-responsive" src="{{ url_for('static',filename='img/block_picture_1473920098.png') }}">
+                    <h4>Unity</h4>
+                    <h5>学习Unity3D游戏开发，成为独立游戏开发者！</h5>
+                </div>
+                <div class="col-xs-4 introduction-item">
+                    <img class="img-responsive" src="{{ url_for('static',filename='img/block_picture_1473920105.png') }}">
+                    <h4>虚幻引擎4</h4>
+                    <h5>从二维的移动平台游戏到主机平台的大作，虚幻引擎4赋予您启动项目、发布项目、不断成长完善并脱颖而出所需的一切功能。 </h5>
+                </div>
+                <div class="col-xs-4 introduction-item">
+                    <img class="img-responsive" src="{{ url_for('static',filename='img/block_picture_1473920110.png') }}">
+                    <h4>更多平台</h4>
+                    <h5>持续更新中</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

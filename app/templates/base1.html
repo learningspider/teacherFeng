@@ -1,0 +1,249 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+    {% if title %}{{ title }} - 博成学院{% else %}{{ '欢迎来到博成学院' }}{% endif %}
+{% endblock %}
+<!-- <meta name="keywords" content="unity,unity3d,siki,siki学院"/>
+<meta name="description" content="siki老师的Unity3D专业视频学习平台，上千门实时更新课程，供学员在线观看，为国内开发者提供最新、最全、最快的视频学习教程"/>
+<link rel="icon" type="image/x-icon" href="../static/img/165519754d1f590889.ico"/>
+<link rel="shortcut icon" href="../static/img/165519754d1f590889.ico" type="image/x-icon" media="screen"/>
+
+
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="../static/css/main.css"/>
+<link rel="stylesheet" type="text/css" href="../static/css/main-v2.css"/> -->
+{% block navbar %}
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ url_for('main.index') }}">Microblog</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url_for('main.index') }}">{{ _('Home') }}</a></li>
+                <li><a href="{{ url_for('main.explore') }}">{{ _('Explore') }}</a></li>
+            </ul>
+            {% if current_user.is_authenticated %}
+            <form class="navbar-form navbar-left" method="get" action="{{ url_for('main.search') }}">
+                <div class="form-group">
+                    {{ g.search_form.q(size=20, class='form-control', placeholder=g.search_form.q.label.text) }}
+                </div>
+            </form>
+            {% endif %}
+            <ul class="nav navbar-nav navbar-right">
+                {% if current_user.is_anonymous %}
+                <li><a href="{{ url_for('auth.login') }}">{{ _('Login') }}</a></li>
+                {% else %}
+                <li>
+                    <a href="{{ url_for('main.messages') }}">{{ _('Messages') }}
+                        {% set new_messages = current_user.new_messages() %}
+                        <span id="message_count" class="badge"style="visibility: {% if new_messages %}visible{% else %}hidden{% endif %};">
+                            {{ new_messages }}
+                        </span>
+                    </a>
+                </li>
+                <li><a href="{{ url_for('main.user', username=current_user.username) }}">{{ _('Profile') }}</a></li>
+                <li><a href="{{ url_for('auth.logout') }}">{{ _('Logout') }}</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+<body class="es-main-default es-nav-default homepage">
+	<div class="es-wrap">
+		<header class="es-header navbar">
+			<div class="navbar-header">
+				<div class="visible-xs  navbar-mobile">
+					<a href="javascript:;" class="navbar-more js-navbar-more">
+						<i class="es-icon es-icon-menu"></i>
+					</a>
+					<div class="html-mask"></div>
+						<div class="nav-mobile">
+							<form class="navbar-form" action="/search" method="get">
+								<div class="form-group">
+									<input class="form-control" placeholder="搜索" name="q">
+										<button class="button es-icon es-icon-search"></button>
+								</div>
+							</form>
+							<ul class="nav navbar-nav">
+								<li class=" active ">
+									<a href="/">首页 </a>
+								</li>
+								<li class="">
+									<a href="/course/explore">全部课程 </a>
+								</li>
+								<li class="nav-hover">
+									<a href="/course/explore/unity">Unity <b class="caret"></b></a>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="http://www.sikiedu.com/course/explore/unity">Unity 全部课程</a></li>
+										<li><a href="http://www.sikiedu.com/classroom/5/introduction">Unity A计划</a></li>
+									</ul>
+								</li>
+								<li class="">
+									<a href="/page/aboutus">关于我们 </a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<a href="/" class="navbar-brand">
+						<img src="../static/img/1651164c8573062499.png">
+					</a>
+				</div>
+				<nav class="collapse navbar-collapse">
+					<ul class="nav navbar-nav clearfix hidden-xs " id="nav">
+						<li class=" active ">
+							<a href="/">首页 </a>
+						</li>
+						<li class="">
+							<a href="/course/explore">全部课程 </a>
+						</li>
+						<li class="nav-hover">
+							<a href="/course/explore/unity">Unity <b class="caret"></b></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="http://www.sikiedu.com/course/explore/unity">Unity 全部课程</a></li>
+									<li><a href="http://www.sikiedu.com/classroom/5/introduction">Unity A计划</a></li>
+								</ul>
+						</li>
+						<li class="">
+							<a href="/page/aboutus">关于我们 </a>
+						</li>
+					</ul>
+					<div class="navbar-user  left ">
+						<ul class="nav user-nav">
+							<li class="user-avatar-li nav-hover visible-xs">
+								<a href="javascript:;" class="dropdown-toggle">
+									<img class="avatar-xs" src="../static/img/avatar.png">
+								</a>
+								<ul class="dropdown-menu" role="menu">
+									<li class="user-nav-li-login">
+										<a href="/login?goto=/">
+											<i class="es-icon es-icon-denglu"></i>登录
+										</a>
+									</li>
+									<li class="user-nav-li-register">
+										<a href="/register?goto=/">
+											<i class="es-icon es-icon-zhuce"></i>注册
+										</a>
+									</li>
+									<li class="mobile-switch js-switch-mobile"><a href="javascript:;">
+										<i class="es-icon es-icon-qiehuan"></i>切换触屏版</a>
+									</li>
+								</ul>
+							</li>
+							<li class="hidden-xs"><a href="/login?goto=/">登录</a></li>
+							<li class="hidden-xs"><a href="/register?goto=/">注册</a></li>
+						</ul>
+						<form class="navbar-form navbar-right hidden-xs hidden-sm" action="/search" method="get">
+							<div class="form-group">
+								<input class="form-control js-search" value="" name="q" placeholder="搜索">
+								<button class="button es-icon es-icon-search"></button>
+							</div>
+						</form>
+					</div>
+				</nav>
+		</header>
+		{% block body %}{% endblock %}
+		<section class="introduction-section hidden-xs">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-4 introduction-item">
+						<img class="img-responsive" src="../static/img/block_picture_1473920098.png">
+						<h4>高中科目</h4>
+						<h5>学习Unity3D游戏开发，成为独立游戏开发者！</h5>
+					</div>
+					<div class="col-xs-4 introduction-item">
+						<img class="img-responsive" src="../static/img/block_picture_1473920105.png">
+						<h4>大学科目</h4>
+						<h5>从二维的移动平台游戏到主机平台的大作，虚幻引擎4赋予您启动项目、发布项目、不断成长完善并脱颖而出所需的一切功能。 </h5>
+					</div>
+					<div class="col-xs-4 introduction-item">
+						<img class="img-responsive" src="../static/img/block_picture_1473920110.png">
+						<h4>更多科目</h4>
+						<h5>持续更新中</h5>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="es-footer-link">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 footer-main clearfix">
+						<div class="link-item ">
+							<h3>还</h3>
+							<ul>
+								<li>
+									<a href="" target="_self">没</a>
+								</li>
+							</ul>
+						</div>
+						<div class="link-item ">
+							<h3>想</h3>
+							<ul>
+								<li>
+									<a href="" target="_self">好</a>
+								</li>
+							</ul>
+						</div>
+						<div class="link-item ">
+							<h3>要</h3>
+							<ul>
+								<li>
+									<a href="" target="_self">放</a>
+								</li>
+							</ul>
+						</div>
+						<div class="link-item hidden-xs">
+							<h3>什</h3>
+							<ul>
+								<li>
+									<a href="" target="_self">么</a>
+								</li>
+							</ul>
+						</div>
+						<div class="link-item hidden-xs">
+							<h3>东</h3>
+							<ul>
+								<li>
+									<a href="" target="_self">西</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-4 footer-logo hidden-sm hidden-xs">
+						<a class="" href="http://www.sikiedu.com" target="_blank">
+							<img src="../static/img/block_picture_1471511030.png?8.0.6" alt="siki学院">
+						</a>
+						<div class="footer-sns">
+							<a href="http://weibo.com/ipengcheng" target="_blank">
+								<i class="es-icon es-icon-weibo"></i>
+							</a>
+							<a class="qrcode-popover top">
+								<i class="es-icon es-icon-weixin"></i>
+								<div class="qrcode-content">
+									<img src="../static/img/block_picture_1473915192.jpg?8.0.6" alt="">
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="es-footer">
+			<div class="copyright">
+				<div class="container">
+					<a class="mlm" href="/archive/course">课程存档</a>
+					<div class="mts">课程内容版权均归 <a href="/">博成学院n</a> 所有
+						<a class="mlm" href="http://www.miibeian.gov.cn/" target="_blank">京ICP备16046985号</a>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+</body>

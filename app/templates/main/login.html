@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+    <div id="content-container" class="container">
+        <div class="es-section login-section">
+            <div class="logon-tab clearfix">
+                <a class="active">登录帐号</a>
+                <a href="/register">注册帐号</a>
+            </div>
+            <div class="login-main">
+                <form id="login-form" class="form-vertical" method="post" action="/login_check">
+                    {{ form.hidden_tag() }}
+                    <div class="form-group mbl">
+                        <label class="control-label" for="login_username">帐号</label>
+                        <div class="controls">
+                            {{ form.email(class="form-control input-lg",id="login_username",value="",required='True',placeholder='邮箱/手机/用户名') }}
+                            <div class="help-block"></div>
+                        </div>
+                    </div>
+                    <div class="form-group mbl">
+                        <label class="control-label" for="login_password">密码</label>
+                        <div class="controls">
+                            {{ form.password(class="form-control input-lg",id="login_password",value="",required='True',placeholder='密码') }}
+                        </div>
+                    </div>
+                    <div class="form-group mbl">
+                        <div class="controls">
+                            {{ form.remember_me(checked="checked") }}
+                            {{ form.remember_me.label}}
+                        </div>
+                    </div>
+                    <div class="form-group mbl">
+                        {{ form.submit(class="btn btn-primary btn-lg btn-block") }}
+                    </div>
+                    <input type="hidden" name="_target_path" value="/">
+                    <input type="hidden" name="_csrf_token" value="fQ78DEcfx4Ziy3H7pkfdTOg5hXeY_984mMZOZ_EadeY">
+                </form>
+                <div class="mbl">
+                    <a href="/password/reset">找回密码</a>
+                    <span class="text-muted mhs">|</span>
+                    <span class="text-muted">还没有注册帐号？</span>
+                    <a href="/register">立即注册</a>
+                </div>
+                <div class="social-login">
+                    <span>
+                        <a href="/login/bind/weibo?_target_path=/&amp;inviteCode=" class="social-icon social-weibo">
+                            <i class="es-icon es-icon-weibo"></i>
+                        </a>
+                        <a href="/login/bind/qq?_target_path=/&amp;inviteCode=" class="social-icon social-qq">
+                            <i class="es-icon es-icon-qq"></i>
+                        </a>
+                    </span>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

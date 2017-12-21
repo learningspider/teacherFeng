@@ -1,0 +1,42 @@
+
+
+	<!-- <link rel="icon" href="{{ url_for('static',filename='img/165519754d1f590889.ico') }}" type="image/x-icon" />
+  	<link rel="shortcut icon" href="{{ url_for('static',filename='img/165519754d1f590889.ico') }}" type="image/x-icon" media="screen"/>
+
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/common.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/font-awesome.min.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/es-icon.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}" /> -->
+
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block title %}首页{% endblock %}
+
+{% block body%}{{super()}}
+{% endblock %}
+<!--
+{% block app_content %}
+    <h1>{{ _('Hi, %(username)s!', username=current_user.username) }}</h1>
+    {% if form %}
+    {{ wtf.quick_form(form) }}
+    <br>
+    {% endif %}
+    {% for post in posts %}
+        {% include '_post.html' %}
+    {% endfor %}
+    <nav aria-label="...">
+        <ul class="pager">
+            <li class="previous{% if not prev_url %} disabled{% endif %}">
+                <a href="{{ prev_url or '#' }}">
+                    <span aria-hidden="true">&larr;</span> {{ _('Newer posts') }}
+                </a>
+            </li>
+            <li class="next{% if not next_url %} disabled{% endif %}">
+                <a href="{{ next_url or '#' }}">
+                    {{ _('Older posts') }} <span aria-hidden="true">&rarr;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+{% endblock %} -->
