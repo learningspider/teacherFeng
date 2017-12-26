@@ -29,7 +29,8 @@ def index():
 #                             form=form,name=session.get('name'),
 #                             known=session.get('known',False),
 #                             current_time=datetime.utcnow())
-    return render_template('index.html')
+    datas = ['课程1','课程2','课程3','课程4','课程5','课程6','课程7','课程8','课程9','课程10','课程11','课程12']
+    return render_template('index.html',datas = datas)
 @main.route('/test')
 def test():
     return render_template('test.html')
