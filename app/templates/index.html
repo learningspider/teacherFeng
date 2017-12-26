@@ -8,11 +8,11 @@
 
     <div id="myCarousel" class="carousel slide">
         <!-- 轮播（Carousel）指标 -->
-        <!-- <ol class="carousel-indicators">
+        <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
             <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol> -->
+        </ol>
         <!-- 轮播（Carousel）项目 -->
         <div class="carousel-inner">
             <div class="item active">
@@ -31,6 +31,13 @@
                 </a>
     		</div>
     	</div>
+        <!-- 轮播（Carousel）导航 -->
+    <a class="carousel-control left" href="#myCarousel"
+        data-slide="prev">&lsaquo;
+    </a>
+    <a class="carousel-control right" href="#myCarousel"
+        data-slide="next">&rsaquo;
+    </a>
     </div>
     <!--课程内容-->
     <div class="container" style="margin:50px auto 50px auto">
@@ -44,7 +51,7 @@
                 <li><a href="#">数学</a></li>
                 <li><a href="#">语文</a></li>
             </ul> -->
-            <div class=" nav nav-pills hidden-xs" style="position:relative;float:left">
+            <div id="myTab" class=" nav nav-pills hidden-xs" style="position:relative;float:left">
                 <div class="btn btn-success" data-url="/123" style="border-color:#fff;">全部课程</div>
                 <a href="#" class="btn btn-default" data-url="/123" style="border-color:#fff;">数学</a>
                 <a href="#" class="btn btn-default" data-url="/123" style="border-color:#fff;">语文</a>
