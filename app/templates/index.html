@@ -32,6 +32,47 @@
     		</div>
     	</div>
     </div>
+    <!--课程内容-->
+    <div class="container" style="margin:50px auto 50px auto">
+        <div class="text-center" style="margin-bottom:50px">
+            <h5><span style="font-size:32px">网校课程</span></h5>
+            <span style="color:#c7c7c7">精选网校课程，满足你的学习兴趣。</span>
+        </div>
+        <div>
+            <!-- <ul class="nav nav-pills hidden-xs">
+                <li class="active"><a href="#">全部课程</a></li>
+                <li><a href="#">数学</a></li>
+                <li><a href="#">语文</a></li>
+            </ul> -->
+            <div class=" nav nav-pills hidden-xs" style="position:relative;float:left">
+                <div class="btn btn-success" data-url="/123" style="border-color:#fff;">全部课程</div>
+                <a href="#" class="btn btn-default" data-url="/123" style="border-color:#fff;">数学</a>
+                <a href="#" class="btn btn-default" data-url="/123" style="border-color:#fff;">语文</a>
+
+            </div>
+            <div class="btn-group visible-xs">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">全部课程 <span class="caret"></span></button>
+                <ul class="dropdown-menu" role="menu">
+                    <li role="presentation" class="js-course-filter " data-url="/course/search?orderBy=latest" data-type="course"><a href="javascript:;">全部课程</a></li>
+                    <li role="presentation" class="js-course-filter " data-url="/course/search?categoryId=7&amp;orderBy=latest" data-type="course"><a href="#">数学</a></li>
+                    <li role="presentation" class="js-course-filter " data-url="/course/search?categoryId=9&amp;orderBy=latest" data-type="course"><a href="#">语文</a></li>
+                </ul>
+            </div>
+            <div class="btn-group" style="position:relative;float:right">
+                <a href="javascript:;" class="btn btn-default js-course-filter" data-url="/course/search?categoryId=0&amp;orderBy=latest" data-type="course">
+                    最新
+                </a>
+                <a href="javascript:;" class="btn btn-default js-course-filter" data-url="/course/search?categoryId=0&amp;orderBy=studentNum" data-type="course">
+                    最热
+                </a>
+                <a href="javascript:;" class="btn btn-default js-course-filter" data-url="/course/search?categoryId=0&amp;orderBy=recommendedSeq" data-type="course">
+                    推荐
+                </a>
+            </div>
+        </div>
+        <div><!--课程-->
+        </div>
+    </div>
     {{super()}}
 {%endblock%}
 
