@@ -18,4 +18,3 @@ manager.add_command("shell",Shell(make_context=make_shell_context))
 if __name__ == '__main__':
     print 'manager已启动'
     manager.run()
-
