@@ -1,11 +1,17 @@
 {% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
-{% block head %}
-    <link href="{{url_for('static',filename='css/index.css')}}" rel="stylesheet" type="text/css" />
-    {{super()}}
-{% endblock %}
-{% block content %}
 
+{% block styles %}
+    {{ super() }}
+    <link href="{{url_for('static',filename='css/index.css')}}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="{{url_for('static',filename='js/index.js')}}" type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- 轮播（Carousel）项目 -->
         <div class="carousel-inner">
@@ -64,7 +70,7 @@
             {% for data in datas %}
                 <!-- <li><h2>{{ data.decode('utf-8') }}</h2> -->
                 <div class="col-lg-3 col-md-4 col-xs-6">
-                    <div class="course-item">
+                    <div class="course-item" style="">
                         <div class="course-img">
                             <a href="/course/89" target="_blank">
                                 <img src="{{url_for('static',filename='img/093208827eab357729.png')}}" alt="Unity初级案例 - 贪吃蛇（Unity2017.2.0）" class="img-responsive">
