@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 from config import config
+from flask_wtf.csrf import CsrfProtect
 
 
 db = SQLAlchemy()
@@ -12,6 +13,7 @@ login_manager.session_protection = 'strong'
 login_manager.login_view='auth.login'
 login_manager.login_message = u'请登录以访问此页面'
 bootstrap = Bootstrap()
+csrf = CsrfProtect()
 
 def create_app(config_name):
     app = Flask(__name__)
@@ -21,6 +23,7 @@ def create_app(config_name):
     db.init_app(app)
     login_manager.init_app(app)
     bootstrap.init_app(app)
+    csrf.init_app(app)
 
     from admin import admin
     admin.init_app(app)
