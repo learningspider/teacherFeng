@@ -22,10 +22,10 @@ admin.add_view(MyView(name=u'网站基本设置'))
 
 
 from app import db
-from models import Role,User,SpendList,Recharge,Subject,Belond,Lesson,Plan,Video,MenuList,IndexContent
+# from models import Role,User,SpendList,Recharge,Subject,Belond,Lesson,Plan,Video,MenuList,IndexContent
 class myModelView(ModelView):
     pass
 
-models = [Role,User,SpendList,Recharge,Subject,Belond,Lesson,Plan,Video,MenuList,IndexContent]
-for model in models:
-    admin.add_view(myModelView(model,db.session, category=u'数据库基本设置'))
+# models = [Role,User,SpendList,Recharge,Subject,Belond,Lesson,Plan,Video,MenuList,IndexContent]
+# for model in models:
+    # admin.add_view(myModelView(model,db.session, category=u'数据库基本设置'))
